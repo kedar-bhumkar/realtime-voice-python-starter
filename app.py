@@ -195,7 +195,7 @@ class RealtimeClient:
             "type": "server_vad",
             "threshold": 0.5,  # Activation threshold (0.0-1.0). A higher threshold will require louder audio to activate the model.
             "prefix_padding_ms": 300,  # Audio to include before the VAD detected speech.
-            "silence_duration_ms": 600  # Silence to detect speech stop. With lower values the model will respond more quickly.
+            "silence_duration_ms": 400  # Silence to detect speech stop. With lower values the model will respond more quickly.
         }
 
         self.session_config = {
@@ -205,9 +205,6 @@ class RealtimeClient:
             "input_audio_format": "pcm16",
             "output_audio_format": "pcm16",
             "turn_detection": self.VAD_config if self.VAD_turn_detection else None,
-            "input_audio_transcription": {  # Get transcription of user turns
-                "model": "whisper-1"
-            },
             "temperature": 0.6
         }
 
